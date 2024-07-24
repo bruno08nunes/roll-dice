@@ -1,0 +1,201 @@
+/* Imports */
+@import url("https://fonts.googleapis.com/css2?family=Rye&display=swap");
+
+@font-face {
+	font-family: "d4";
+	src: url("assets/fonts/4.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "d6";
+	src: url("assets/fonts/6.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "d8";
+	src: url("assets/fonts/8.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "d10";
+	src: url("assets/fonts/10.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "d12";
+	src: url("assets/fonts/12.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "d20";
+	src: url("assets/fonts/20.ttf") format("truetype");
+}
+
+/* Resets, Variables and Body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --roxo-escuro: #3a0955;
+    --roxo-medio: #511670;
+    --rosa-escuro: #b782d4;
+    --rosa-claro: #db77fa;
+}
+
+body {
+    background-color: var(--roxo-medio);
+}
+
+/* Header */
+.header-page {
+    background-color: var(--roxo-escuro);
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2em;
+    color: white;
+    font-family: "Rye", serif;
+}
+
+.logo {
+    max-width: 180px;
+}
+
+/* Main */
+
+.main-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+/* Section Dice */
+.section-dice {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    flex: 1;
+}
+
+.dice {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dice-value {
+    position: absolute;
+    font-size: 3em;
+    color: white;
+    font-family: "Rye", serif;
+    text-align: center;
+}
+
+.img-dice {
+    max-width: 300px;
+    width: 100%;
+}
+
+/* Section Form */
+
+.section-options {
+    flex: 1;
+    color: white;
+    font-size: 1.4em;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.form-dices {
+    border: 2px solid white;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+
+    & div {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    & h2 {
+        font-size: 1em;
+        font-weight: normal;
+    }
+}
+
+div.div-type {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.div-types {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.label-select-dice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 15px;
+    text-align: center;
+    &:has(input:checked) {
+        background-color: color-mix(in srgb, var(--roxo-medio) 50%, black);
+    }
+}
+
+.form-dices input:not([type="radio"]) {
+    font-size: 0.9em;
+    padding: 5px;
+    flex: 1;
+    text-align: center;
+}
+
+.form-dices input[type="radio"] {
+    accent-color: var(--rosa-claro);
+    width: 20px;
+    height: 20px;
+}
+
+.div-button-roll {
+    justify-content: center;
+    padding: 10px;
+}
+
+.button-roll {
+    background-color: var(--rosa-claro);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    transition: 0.4s;
+    cursor: pointer;
+    &:hover {
+        background-color: color(from var(--rosa-claro) srgb r g b / 0.6);
+    }
+}
+
+:is(.d4, .d6, .d8, .d10, .d12, .d20) { font-size: 2em; }
+.d4 { font-family: d4; }
+.d6 { font-family: d6; }
+.d8 { font-family: d8; }
+.d10 { font-family: d10; }
+.d12 { font-family: d12; }
+.d20 { font-family: d20; }

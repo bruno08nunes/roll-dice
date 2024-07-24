@@ -6,6 +6,7 @@
     <title>Roll Dice</title>
     <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/mediaQueries.css">
     <script type="module" src="script.js"></script>
 </head>
 <body>
@@ -16,17 +17,15 @@
     <main class="main-page">
         <section class="section-dice">
             <div class="dice">
-                <img src="assets/dice.png" alt="" class="img-dice">
-                <p class="dice-value">20</p>
-            </div>
-            <div class="dice">
-                <img src="assets/dice.png" alt="" class="img-dice">
+                <img src="assets/dices/d20.png" alt="" class="img-dice">
                 <p class="dice-value">20</p>
             </div>
         </section>
+        <button class="button-open"><img src="assets/icons/menu.svg" alt="Abrir Modal"></button>
         <section class="section-options">
-            <h1>Informações</h1>
-            <form class="form-dices">
+            <button class="button-close"><img src="assets/icons/close.svg" alt="Fechar Modal"></button>
+            <h1>Escolha o dado</h1>
+            <form class="form-dices" id="form">
                 <div class="div-type">
                     <h2 for="type">Tipo de dado:</h2>
                     <div class="div-types">
@@ -67,9 +66,11 @@
                         </label>
                     </div>
                 </div>
-                <div>
+                <div class="div-inputs">
                     <label for="amount">Quantidade:</label>
-                    <input type="number" name="amount" id="amount" value="1" min="1" max="15">
+                    <button type="button" class="subtraction-button" data-input="amount">-</button>
+                    <input type="number" name="amount" id="amount" value="1" min="1" max="25" required>
+                    <button type="button" class="sum-button" data-input="amount">+</button>
                 </div>
                 <div>
                     <label for="sum">Somar valor total:</label>
@@ -83,19 +84,26 @@
                     <label for="min">Pegar menor valor:</label>
                     <input type="radio" name="selected" id="min" value="min">
                 </div>
-                <div>
+                <div class="div-inputs">
                     <label for="bonus">Bônus:</label>
+                    <button type="button" class="subtraction-button" data-input="bonus">-</button>
                     <input type="number" name="bonus" id="bonus" value="0">
+                    <button type="button" class="sum-button" data-input="bonus">+</button>
                 </div>
-                <div>
+                <div class="div-inputs">
                     <label for="desvantagens">Desvantagens:</label>
+                    <button type="button" class="subtraction-button" data-input="desvantagens">-</button>
                     <input type="number" name="desvantagens" id="desvantagens" value="0">
+                    <button type="button" class="sum-button" data-input="desvantagens">+</button>
                 </div>
                 <div class="div-button-roll">
-                    <button class="button-roll">Rolar Dados</button>
+                    <button class="button-roll" type="submit">Rolar Dados</button>
                 </div>
             </form>
         </section>
     </main>
+    <div class="div-button-roll-again">
+        <button type="submit" form="form" class="button-roll">Rolar Novamente</button>
+    </div>
 </body>
 </html>

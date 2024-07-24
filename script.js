@@ -1,59 +1,31 @@
-import rollDice from "./modules/rollDice.js";
-import createDice from "./modules/createDice.js";
-import createDiceElement from "./modules/createDiceElement.js";
+// Imports
+import uncheckRadio from "./modules/uncheckRadio.js";
+import submitForm from "./modules/submitForm.js";
+import subtractInput from "./modules/subtractInput.js";
+import sumInput from "./modules/sumInput.js";
+import toggleForm from "./modules/toggleForm.js";
 
+// Unchecks Radios
 const checks = document.querySelectorAll("input[name=selected]");
 const abortControllers = new Map();
-checks.forEach((input) => {
-    input.addEventListener("change", (e) => {
-        for (let controller of abortControllers.values()) {
-            controller.abort();
-        }
-        const controller = new AbortController();
-        abortControllers.set(e.target, controller);
-        e.target.addEventListener(
-            "click",
-            () => {
-                e.target.checked = false;
-                controller.abort()
-            },
-            {
-                signal: controller.signal,
-            }
-        );
-    });
+checks.forEach((input) => uncheckRadio(input, abortControllers));
+
+// Submit Form
+const formDices = document.querySelector(".form-dices");
+formDices.addEventListener("submit", submitForm);
+
+// Increase and Decrease Inputs
+const subtractionButtons = document.querySelectorAll(".subtraction-button");
+subtractionButtons.forEach(button => {
+    button.addEventListener("click", subtractInput);
 });
 
-const formDices = document.querySelector(".form-dices");
-formDices.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const formData = new FormData(formDices);
-    const diceType = Number(formData.get("dices").slice(1));
-    const dice = createDice(diceType);
+const sumButtons = document.querySelectorAll(".sum-button");
+sumButtons.forEach(button => {
+    button.addEventListener("click", sumInput);
+});
 
-    const amount = Number(formData.get("amount"));
-    const numbers = rollDice(dice, amount);
-    let filteredNumber;
-    const option = formData.get("selected");
-
-    if (option === "sum") {
-        filteredNumber = numbers.reduce((prev, element) => prev + element);
-    }
-
-    if (option === "max") {
-        filteredNumber = Math.max(...numbers);
-    }
-
-    if (option === "min") {
-        filteredNumber = Math.min(...numbers);
-    }
-
-    if (option) {
-        const bonus = Number(formData.get("bonus"));
-        const desvantagens = Number(formData.get("desvantagens"));
-        filteredNumber += bonus;
-        filteredNumber -= desvantagens;
-    }
-
-    createDiceElement(filteredNumber === undefined ? numbers : [filteredNumber]);
-})
+// Open Config Form
+const openButton = document.querySelector(".button-open");
+const closeButton = document.querySelector(".button-close");
+toggleForm(openButton, closeButton)

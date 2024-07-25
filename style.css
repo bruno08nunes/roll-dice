@@ -82,6 +82,8 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 15px;
     flex: 1;
+    position: relative;
+    font-family: "Rye", serif;
 }
 
 .dice {
@@ -95,10 +97,16 @@ body {
     position: absolute;
     font-size: 3em;
     color: white;
-    font-family: "Rye", serif;
     text-align: center;
     animation: write 400ms 800ms forwards;
     opacity: 0;
+    .img-dice[src*="d4"] + & {
+        translate: 0 30px;
+    }
+    .img-dice[src*="d12"] + & {
+        translate: 0 8px;
+        font-size: 2.7em;
+    }
 }
 
 @keyframes write {
@@ -114,12 +122,6 @@ body {
     max-width: 300px;
     width: 100%;
     animation: roll 1s;
-    &[src*="d4"] {
-        translate: 0 -30px;
-    }
-    &[src*="d12"] {
-        translate: 0 -10px;
-    }
 }
 
 @keyframes roll {
@@ -133,6 +135,17 @@ body {
         rotate: 360deg;
     }
 }
+
+.dice-value-amount {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    translate: -50% 0;
+    
+    font-size: 2em;
+    color: white;
+}
+
 
 /* Section Form */
 
@@ -269,7 +282,7 @@ div.div-type {
 }
 
 .div-button-roll-again {
-    justify-content: center;
+    justify-content: flex-end;
     padding: 15px;
     font-size: 1.3em;
     display: none;

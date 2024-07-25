@@ -20,4 +20,8 @@
     .div-button-roll-again {
         display: flex;
     }
+    .dice-value-amount {
+        left: 15px;
+        translate: 0;
+    }
 }

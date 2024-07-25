@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- Dados -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roll Dice</title>
     <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+    
+    <!-- Arquivos -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="styles/mediaQueries.css">
     <script type="module" src="script.js"></script>
+
+    <!-- Preload -->
+     <link rel="preload" as="image" href="assets/dices/d4.png" type="image/png">
+     <link rel="preload" as="image" href="assets/dices/d6.png" type="image/png">
+     <link rel="preload" as="image" href="assets/dices/d8.png" type="image/png">
+     <link rel="preload" as="image" href="assets/dices/d10.png" type="image/png">
+     <link rel="preload" as="image" href="assets/dices/d12.png" type="image/png">
+     <link rel="preload" as="image" href="assets/dices/d20.png" type="image/png">
+
+     <link rel="preload" href="assets/fonts/4.ttf" as="font" type="font/ttf" />
+     <link rel="preload" href="assets/fonts/6.ttf" as="font" type="font/ttf" />
+     <link rel="preload" href="assets/fonts/8.ttf" as="font" type="font/ttf" />
+     <link rel="preload" href="assets/fonts/10.ttf" as="font" type="font/ttf" />
+     <link rel="preload" href="assets/fonts/12.ttf" as="font" type="font/ttf" />
+     <link rel="preload" href="assets/fonts/20.ttf" as="font" type="font/ttf" />
 </head>
 <body>
     <header class="header-page">
@@ -87,13 +105,13 @@
                 <div class="div-inputs">
                     <label for="bonus">Bônus:</label>
                     <button type="button" class="subtraction-button" data-input="bonus">-</button>
-                    <input type="number" name="bonus" id="bonus" value="0">
+                    <input type="number" name="bonus" id="bonus" value="0" min="0">
                     <button type="button" class="sum-button" data-input="bonus">+</button>
                 </div>
                 <div class="div-inputs">
                     <label for="desvantagens">Desvantagens:</label>
                     <button type="button" class="subtraction-button" data-input="desvantagens">-</button>
-                    <input type="number" name="desvantagens" id="desvantagens" value="0">
+                    <input type="number" name="desvantagens" id="desvantagens" value="0" min="0">
                     <button type="button" class="sum-button" data-input="desvantagens">+</button>
                 </div>
                 <div class="div-button-roll">

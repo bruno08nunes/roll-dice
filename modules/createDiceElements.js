@@ -1,5 +1,7 @@
 const filterDiceType = (diceType) => (diceType === 100) ? 10 : diceType;
 
+const filterBonus = (bonus) => bonus === 0 ? "" : Math.sign(bonus) > 0 ? `+${bonus}` : bonus
+
 const createDiceElement = (diceType, value) => {
     const dice = document.createElement("div");
     dice.classList.add("dice");
@@ -16,14 +18,27 @@ const createDiceElement = (diceType, value) => {
     return dice;
 }
 
-export default function createDiceElements(numbers, diceType) {
+const createAmountValueDiv = ({amount, type, bonus}) => {
+    bonus = filterBonus(bonus);
+
+    const div = document.createElement("div");
+    div.classList.add("dice-value-amount");
+    div.textContent = `${amount}d${type}${bonus}`;
+    return div;
+}
+
+export default function createDiceElements({numbers, diceType, bonus, amount}) {
     const diceSection = document.querySelector(".section-dice");
     diceSection.innerHTML = "";
 
-    diceType = filterDiceType(diceType);
+    const amountDiv = createAmountValueDiv({amount, type: diceType, bonus});
 
+    diceType = filterDiceType(diceType);
+    
     for (let num of numbers) {
         const dice = createDiceElement(diceType, num);
         diceSection.append(dice);
     }
+    
+    diceSection.append(amountDiv);
 }

@@ -27,11 +27,11 @@ export default function submitForm(e) {
         filteredNumber = Math.min(...numbers);
     }
 
+    const bonus = Number(formData.get("bonus"));
+    const desvantagens = Number(formData.get("desvantagens"));
+    const totalBonus = bonus - desvantagens;
     if (option) {
-        const bonus = Number(formData.get("bonus"));
-        const desvantagens = Number(formData.get("desvantagens"));
-        filteredNumber += bonus;
-        filteredNumber -= desvantagens;
+        filteredNumber += totalBonus;
     }
 
     const values = filteredNumber === undefined ? numbers : [filteredNumber];
@@ -41,5 +41,5 @@ export default function submitForm(e) {
         sectionOptions.classList.remove("open");
     }
 
-    createDiceElements(values, diceType);
+    createDiceElements({numbers: values, diceType, bonus: totalBonus, amount});
 }
